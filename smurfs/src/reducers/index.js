@@ -1,7 +1,7 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-
+import { GET_SMURFS, ADD_SMURF } from '../actions'
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
  {
@@ -33,6 +33,16 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch(action.type) {
+    case GET_SMURFS:
+      console.log('getting smurfs!')
+      return {
+        ...state,
+      }
+      case ADD_SMURF:
+        console.log('smurf added!')
+        return {
+          ...state,
+        }
     default:
       return state;
   }

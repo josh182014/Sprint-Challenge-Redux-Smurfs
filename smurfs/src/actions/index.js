@@ -2,6 +2,10 @@
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
 */
+import axios from 'axios';
+
+export const GET_SMURFS = 'GET_SMURFS'
+export const ADD_SMURF = 'ADD_SMURF'
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -13,3 +17,7 @@
    U - updateSmurf
    D - deleteSmurf
 */
+
+export const getSmurfs = () => dispatch => {
+
+}
