@@ -5,7 +5,9 @@
 import axios from 'axios';
 
 export const GET_SMURFS = 'GET_SMURFS'
+export const GET_SMURFS_SUCCESS = 'GET_SMURFS_SUCCESS'
 export const ADD_SMURF = 'ADD_SMURF'
+export const ADD_SMURF_SUCCESS = 'ADD_SMURF_SUCCESS'
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -21,9 +23,10 @@ export const ADD_SMURF = 'ADD_SMURF'
 export const getSmurfs = () => dispatch => {
   dispatch({ type: GET_SMURFS })
   return axios
-  .post('http://localhost:3333/smurfs')
+  .get('http://localhost:3333/smurfs')
   .then(res => {
     console.log(res)
+    dispatch({ type: GET_SMURFS_SUCCESS, payload: res.data })
   })
   .catch(err => {
     console.log(err)

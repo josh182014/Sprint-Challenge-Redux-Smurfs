@@ -1,7 +1,7 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import { GET_SMURFS, ADD_SMURF } from '../actions'
+import { GET_SMURFS, GET_SMURFS_SUCCESS, ADD_SMURF, ADD_SMURF_SUCCESS } from '../actions'
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
  {
@@ -37,7 +37,15 @@ const reducer = (state = initialState, action) => {
       console.log('getting smurfs!')
       return {
         ...state,
+        fetchingSmurfs: true
       }
+      case GET_SMURFS_SUCCESS:
+        console.log('successfully retrieved smurfs')
+        return {
+          ...state,
+          fetchingSmurfs: false,
+          smurfs: action.payload
+        }
       case ADD_SMURF:
         console.log('smurf added!')
         return {
