@@ -47,7 +47,7 @@ const reducer = (state = initialState, action) => {
           smurfs: action.payload
         }
       case ADD_SMURF:
-        console.log('smurf added!')
+        console.log('smurf added!', action)
         return {
           ...state,
           addingSmurf: true
@@ -56,6 +56,9 @@ const reducer = (state = initialState, action) => {
         console.log('successfully added a new smurf')
         return {
           ...state,
+          smurfs: [
+            ...state.smurfs,
+          ],
           addingSmurf: false,
         }
     default:
