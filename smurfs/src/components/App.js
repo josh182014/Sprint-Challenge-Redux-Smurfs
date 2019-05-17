@@ -35,7 +35,7 @@ class App extends Component {
     const formattedSmurfs = []
     if (this.props.smurfs) {
         this.props.smurfs.forEach((smurf) => {
-            formattedSmurfs.push({name: smurf.name })
+            formattedSmurfs.push({name: smurf.name, age: smurf.age, height: smurf.height })
         })
     }
     return formattedSmurfs
@@ -64,7 +64,7 @@ class App extends Component {
           {!this.props.fetchingSmurfs && newSmurfs.length > 0 && (
             <div>
               {newSmurfs.map(smurf => (
-                <p key={smurf.name}>{smurf.name}</p>
+                <p key={smurf.name}><strong>Name:</strong> {smurf.name} <strong>Age:</strong> {smurf.age} <strong>Height:</strong> {smurf.height}</p>
               ))}
             </div>
           )}
