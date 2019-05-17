@@ -32,3 +32,15 @@ export const getSmurfs = () => dispatch => {
     console.log(err)
   })
 }
+
+export const addSmurf = (props) => dispatch => {
+  dispatch({ type: ADD_SMURF })
+  return axios
+  .post('http://localhost:3333/smurfs', props)
+  .then(res => {
+    console.log('heflkasdflkjasdf', res)
+  })
+  .catch(err => {
+    console.log(err)
+  })
+}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getSmurfs } from '../actions'
+import { getSmurfs, addSmurf } from '../actions'
 import './App.css';
 /*
  to wire this component up you're going to need a few things.
@@ -41,8 +41,13 @@ class App extends Component {
     return formattedSmurfs
   }
 
-  addSmurf = () => {
-    this.props.addSmurf()
+  addNewSmurf = (e) => {
+    e.preventDefault()
+    this.props.addSmurf(this.state.newSmurf)
+    this.setState({ newSmurf: {
+      ...this.state.newSmurf,
+      name: '', age: '', height: '', id: ''}
+    })
   }
 
 
@@ -62,7 +67,7 @@ class App extends Component {
             </div>
           )}
         </div>
-        <form onSubmit={this.addSmurf}>
+        <form onSubmit={this.addNewSmurf}>
           <input
             type='text'
             name='name'
@@ -105,5 +110,5 @@ const mapStateToProps = ({ smurfs, fetchingSmurfs }) => ({
 export default
   connect(
     mapStateToProps,
-    { getSmurfs }
+    { getSmurfs, addSmurf }
   )(App);
