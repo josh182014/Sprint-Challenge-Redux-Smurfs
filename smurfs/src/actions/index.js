@@ -19,5 +19,13 @@ export const ADD_SMURF = 'ADD_SMURF'
 */
 
 export const getSmurfs = () => dispatch => {
-
+  dispatch({ type: GET_SMURFS })
+  return axios
+  .post('http://localhost:3333/smurfs')
+  .then(res => {
+    console.log(res)
+  })
+  .catch(err => {
+    console.log(err)
+  })
 }
