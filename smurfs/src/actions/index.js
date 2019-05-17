@@ -39,6 +39,7 @@ export const addSmurf = (props) => dispatch => {
   .post('http://localhost:3333/smurfs', props)
   .then(res => {
     console.log('heflkasdflkjasdf', res)
+    dispatch({ type: ADD_SMURF_SUCCESS})
   })
   .catch(err => {
     console.log(err)

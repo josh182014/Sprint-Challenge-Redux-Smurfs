@@ -42,7 +42,6 @@ class App extends Component {
   }
 
   addNewSmurf = (e) => {
-    e.preventDefault()
     this.props.addSmurf(this.state.newSmurf)
     this.setState({ newSmurf: {
       ...this.state.newSmurf,
@@ -95,16 +94,23 @@ class App extends Component {
             value={this.state.newSmurf.height}
             required>
           </input>
-          <button>Add Smurf</button>
+          <button>
+          {this.props.addingSmurf ? (
+              '.......'
+          ) : (
+              'Add Smurf'
+          )}
+          </button>
         </form>
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ smurfs, fetchingSmurfs }) => ({
+const mapStateToProps = ({ smurfs, fetchingSmurfs, addingSmurf }) => ({
   smurfs,
-  fetchingSmurfs
+  fetchingSmurfs,
+  addingSmurf
 });
 
 export default

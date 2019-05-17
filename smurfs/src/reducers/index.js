@@ -56,7 +56,7 @@ const reducer = (state = initialState, action) => {
         console.log('successfully added a new smurf')
         return {
           ...state,
-          addingSmurf: false
+          addingSmurf: false,
         }
     default:
       return state;
