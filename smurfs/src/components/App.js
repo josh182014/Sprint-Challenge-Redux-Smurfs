@@ -12,23 +12,43 @@ class App extends Component {
 
   componentDidMount() {
     this.props.getSmurfs();
+  }
+
+  renderSmurfs = () => {
+    const formattedSmurfs = []
+    if (this.props.smurfs) {
+        this.props.smurfs.forEach((smurf) => {
+            formattedSmurfs.push({name: smurf.name})
+        })
+    }
+    return formattedSmurfs
 }
 
+
   render() {
+    const newSmurfs = this.renderSmurfs()
     console.log('inside App.js', this.props.smurfs)
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
+        <div>
+          {this.props.fetchingSmurfs && 'Fetching...'}
+          {!this.props.fetchingSmurfs && newSmurfs.length > 0 && (
+            <div>
+              {newSmurfs.map(smurf => (
+                <p>{smurf.name}</p>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ smurfs }) => ({
-  smurfs
+const mapStateToProps = ({ smurfs, fetchingSmurfs }) => ({
+  smurfs,
+  fetchingSmurfs
 });
 
 export default
